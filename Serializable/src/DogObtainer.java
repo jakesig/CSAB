@@ -6,7 +6,7 @@ public class DogObtainer {
         try {
             File otherDog = new File("H:\\CSAB Library\\Quarter 1\\Serializable Project\\dog.txt");
             FileInputStream in = new FileInputStream(otherDog);
-            ObjectInputStream obj = new ObjectInputStream(in);;
+            ObjectInputStream obj = new ObjectInputStream(in);
             d = (Dog)obj.readObject();
             System.out.println(d);
             obj.close();
