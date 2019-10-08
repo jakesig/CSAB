@@ -36,7 +36,7 @@ public class Laptop {
     @Override
     public String toString() {
         return  "Brand:  " + brand +
-                "\tMemory:  " + memory +
-                "\tPrice:  " + price;
+                "\tMemory:  " + memory + " GB" +
+                "\tPrice:  $" + price;
     }
 }
