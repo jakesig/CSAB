@@ -13,28 +13,15 @@ public class Laptop {
         return brand;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
     public int getMemory() {
         return memory;
-    }
-
-    public void setMemory(int memory) {
-        this.memory = memory;
     }
 
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    @Override
-    public String toString() {
+    @Override public String toString() {
         return  "Brand:  " + brand +
                 "\tMemory:  " + memory + " GB" +
                 "\tPrice:  $" + price;
