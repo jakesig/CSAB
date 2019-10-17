@@ -26,8 +26,6 @@ public class Hangman {
         }
         System.out.println(lettersMissed(letter));
     }
-    //Guess the specified letter.
-
     public StringBuilder correct(char goodGuess) {
         if (gameplay==word)
             System.out.println(gameWon());
