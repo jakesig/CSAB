@@ -1,34 +1,59 @@
 public class Hangman {
-    private String word;
+    private StringBuilder word;
+    private StringBuilder lettersMissed;
+    private StringBuilder gameplay;
     private int maxMisses;
-
+    private int misses;
+    private boolean gameOver;
     public Hangman (String word, int maxMisses) {
-        this.word=word;
+        this.word=new StringBuilder(word);
+        this.lettersMissed=new StringBuilder("Letters Missed: ");
+        this.gameplay=new StringBuilder(word.length());
+        for (int i = 0; i <word.length() ; i++) {
+            gameplay.append('-');
+        }
+        System.out.println(gameplay);
         this.maxMisses=maxMisses;
-    }
-    public String word () {
-        return this.word;
-    }
-    public int maxMissesAllowed () {
-        return this.maxMisses;
+        this.misses=0;
+        gameOver=false;
     }
     public void guess (char letter) {
-
+        for (int i = 0; i < word.length() ; i++) {
+            if (word.charAt(i)==letter) {
+                System.out.println(correct(letter));
+                return;
+            }
+        }
+        System.out.println(lettersMissed(letter));
     }
     //Guess the specified letter.
 
-    public String correct () {
-
+    public StringBuilder correct(char goodGuess) {
+        if (gameplay==word)
+            System.out.println(gameWon());
+        for (int i = 0; i <gameplay.length() ; i++) {
+            if (word.charAt(i)==goodGuess) {
+                gameplay.setCharAt(i,goodGuess);
+            }
+        }
+        return gameplay;
     }
-    //The word with the correctly guessed letters shown. Letters not
-    //yet guessed are shown as hyphens (-).
-
-    public String lettersMissed ()
-    //Erroneous guesses. Letters either are not in the word, or guessed more than once.
-
-    public boolean gameOver ()
-    //The game is over.
-
-    public boolean gameWon ()
-    //The game has been won.
+    public StringBuilder lettersMissed(char miss) {
+        if (++misses>=maxMisses) {
+            return gameOver();
+        }
+        lettersMissed.append(miss+"\t");
+        return lettersMissed;
+    }
+    public StringBuilder gameOver () {
+        gameOver=true;
+        return new StringBuilder("The game is over. You lost. The word was \""+word+"\".");
+    }
+    public StringBuilder gameWon () {
+        gameOver=true;
+        return new StringBuilder("You won!");
+    }
+    public boolean isGameOver() {
+        return gameOver;
+    }
 }
