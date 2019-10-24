@@ -27,12 +27,14 @@ public class Hangman {
         System.out.println(lettersMissed(letter));
     }
     public StringBuilder correct(char goodGuess) {
-        if (gameplay==word)
-            System.out.println(gameWon());
         for (int i = 0; i <gameplay.length() ; i++) {
             if (word.charAt(i)==goodGuess) {
                 gameplay.setCharAt(i,goodGuess);
             }
+        }
+        if (gameplay.toString().equals(word.toString())) {
+            System.out.println(gameWon());
+            System.exit(0);
         }
         return gameplay;
     }
