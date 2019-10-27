@@ -17,7 +17,7 @@ public class Sample {
         catch (FileNotFoundException f) {
             System.out.println("Error: File not found");
         }
-        while (scan.hasNextLine()) {
+        for (int i = 0; i < 3; i++) {
             stringArr.add(scan.nextLine());
         }
         logLength=Integer.parseInt(stringArr.get(0));
