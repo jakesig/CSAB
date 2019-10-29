@@ -8,9 +8,9 @@ public class Human {
         this.name=myName;
         myHeart = new Heart(60);
         myLung = new Lung();
-        myBrain = new Brain(myHeart, myLung,this);
         myHeart.initializeLung(myLung);
         myLung.initializeHeart(myHeart);
+        myBrain = new Brain(myHeart, myLung,this);
         System.out.println(name+" is now alive.");
     }
     public String getName() {
