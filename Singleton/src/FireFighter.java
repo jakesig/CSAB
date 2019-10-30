@@ -1,22 +1,31 @@
 public class FireFighter extends TeamMember{
     private static FireFighter ourInstance = null;
-    private PoliceOfficer policeOfficer;
-    private Doctor doctor;
+    private static PoliceOfficer policeOfficer;
+    private static Doctor doctor;
 
     public static FireFighter getInstance() {
-        if (ourInstance==null)
+        if (ourInstance==null) {
             ourInstance = new FireFighter();
+            policeOfficer = PoliceOfficer.getInstance();
+            doctor = Doctor.getInstance();
+        }
         return ourInstance;
     }
 
     private FireFighter() {
         super("Fire Fighter Jim");
-        policeOfficer = PoliceOfficer.getInstance();
-        doctor = Doctor.getInstance();
     }
 
     public void giveHelp() {
         System.out.println(getName()+" is giving help.");
+    }
+
+    public PoliceOfficer getPoliceOfficer() {
+        return policeOfficer;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
     }
 
     @Override public void work() {
