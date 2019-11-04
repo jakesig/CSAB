@@ -1,13 +1,10 @@
-
-/**
- * Write a description of class dog.Basenji here.
- *
- * @author Jacob Sigman
- * @version 9/17/2018
- */
-public class Basenji extends Dog
+public class Basenji extends ShowDog
 {
-   @Override public void speak() {
+    public Basenji(String name, int age, double weight) {
+        super(name, age, weight);
+    }
+
+    @Override public void speak() {
        System.out.println("");
     }
 }

@@ -1,12 +1,6 @@
-/**
- * Write a description of class dog.DogTester here.
- *
- * @author Jacob Sigman
- * @version 9/17/2018
- */
 public class DogTester
 {
-    public static void main (String [] args) {
+    /*public static void main (String [] args) {
         //dog.Dog Class
         Dog d=new Dog();
         Beagle sp= new Beagle();
@@ -64,7 +58,8 @@ public class DogTester
         c.getWeight();
         c.getAge();
         c.speak();
-    */
-    }
+        }
+     */
+
     
 }

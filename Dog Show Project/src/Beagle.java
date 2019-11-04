@@ -1,15 +1,11 @@
-
-
-/**
- * Write a description of class dog.Beagle here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class Beagle extends Dog
+public class Beagle extends ShowDog
 {
     private int volume;
-    
+
+    public Beagle(String name, int age, double weight) {
+        super(name, age, weight);
+    }
+
     public String toString()  {
         return super.toString()+"\nHowl Volume: " + volume +" db";
     }

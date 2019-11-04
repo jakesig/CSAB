@@ -1,13 +1,9 @@
-package dog;
-
-/**
- * Write a description of class dog.Chihuahua here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class Chihuahua extends Dog
+public class Chihuahua extends ShowDog
 {
+    public Chihuahua(String name, int age, double weight) {
+        super(name, age, weight);
+    }
+
     @Override public void speak() {
         System.out.println("Woof!");
         System.out.println("Woof!\n");

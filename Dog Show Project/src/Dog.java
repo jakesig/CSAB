@@ -1,16 +1,21 @@
-
-/**
- * Write a description of class dog.Dog here.
- *
- * @author Jacob Sigman
- * @version 9/17/2018
- */
 public class Dog
 {
     private String name;
     private double weight;
     private int age;
-    
+
+    public Dog(String name, int age, double weight) {
+        this.name = name;
+        this.weight = weight;
+        this.age = age;
+    }
+
+    public Dog() {
+        this.name = "None";
+        this.weight = 0.0;
+        this.age = 0;
+    }
+
     @Override public String toString() {
         return "Name: " + name + "\nAge: " + age + "\nWeight: " + weight;
     }
