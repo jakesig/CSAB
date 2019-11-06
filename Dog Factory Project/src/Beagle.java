@@ -5,6 +5,9 @@ public class Beagle extends ShowDog
     public Beagle(String name, int age, double weight) {
         super(name, age, weight);
     }
+    public Beagle() {
+        super("None",0,0);
+    }
 
     public String toString()  {
         return super.toString()+"\nHowl Volume: " + volume +" db";

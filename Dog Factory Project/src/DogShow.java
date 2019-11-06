@@ -11,19 +11,16 @@ public class DogShow{
     public DogShow() {
         show = new ArrayList<ShowDog>();
     }
-    private void randomDogs() {
-        show.clear();
-        int rand;
-        for (int i = 0; i < DEFAULT ; i++) {
-            rand = generator.nextInt(TYPE);
-            if (rand==0)
-                show.add(new Poodle("Poodle "+generator.nextInt(MEDALS), generator.nextInt(MAXAGE), Math.round(generator.nextDouble()*MAXWEIGHT)));
-            if (rand==1)
-                show.add(new Poodle("Basenji "+generator.nextInt(MEDALS), generator.nextInt(MAXAGE), Math.round(generator.nextDouble()*MAXWEIGHT)));
-            if (rand==2)
-                show.add(new Poodle("Beagle "+generator.nextInt(MEDALS), generator.nextInt(MAXAGE),Math.round(generator.nextDouble()*MAXWEIGHT)));
-            if (rand==3)
-                show.add(new Poodle("Chihuahua "+generator.nextInt(MEDALS), generator.nextInt(MAXAGE),Math.round(generator.nextDouble()*MAXWEIGHT)));
+    public void registerRandomDogs() {
+        ShowDog d;
+        RandomShowDogFactory temp = new RandomShowDogFactory();
+        for (int i = 0; i < 100 ; i++) {
+            try {
+                d = temp.createShowDog();
+                show.add(d);
+            }
+            catch(Exception e) {
+            }
         }
     }
     private void sortDogs() {
@@ -40,7 +37,7 @@ public class DogShow{
         }
     }
     public void showTime() {
-        randomDogs();
+        registerRandomDogs();
         awardMedals();
         sortDogs();
         System.out.println("First:\n"+show.get(0));
