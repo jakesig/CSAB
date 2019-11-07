@@ -6,29 +6,18 @@ public class RandomShowDogFactory {
     };
     private static Random generator = new Random();
     public ShowDog createShowDog() throws Exception {
-        ShowDog d;
+        ShowDog d = new ShowDog();
         DogTypes [] types = DogTypes.values();
         DogTypes randomDogType = types[generator.nextInt(types.length)];
-        switch (randomDogType) {
-            case Poodle:
-                d = new Poodle();
-                break;
-            case Basenji:
-                d = new Basenji();
-                break;
-            case Beagle:
-                d = new Beagle();
-                break;
-            case Chihuahua:
-                d = new Chihuahua();
-                break;
-            default:
-                d = new ShowDog();
-                break;
+        try {
+            d = (ShowDog)(Class.forName(randomDogType.toString())).newInstance();
+        }
+        catch (Exception e) {
+
         }
         d.setName(d.getClass().getName()+generator.nextInt(1000));
         d.setAge(generator.nextInt(10));
-        d.setWeight(generator.nextDouble()*1000);
+        d.setWeight(generator.nextDouble()*100);
         return d;
     }
 

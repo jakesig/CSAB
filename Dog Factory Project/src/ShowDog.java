@@ -4,7 +4,6 @@ public class ShowDog extends Dog {
         super(name, age, weight);
         medals = 0;
     }
-
     public ShowDog() {
         super("None", 0, 0);
     }
