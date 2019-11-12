@@ -10,7 +10,7 @@ public class Beagle extends ShowDog
     }
 
     public String toString()  {
-        return super.toString()+"\nHowl Volume: " + volume +" db";
+        return super.toString()+"Howl Volume: " + volume +" db\n";
     }
     
     public void setVolume(int v) {
