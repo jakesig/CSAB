@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+
 public class Controller extends Application implements EventHandler<ActionEvent> {
     private GridPane pane;
     private Scene scene;
@@ -14,6 +15,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
     @Override public void start(Stage stage) {
         pane = new GridPane();
         scene = new Scene(pane, GRIDSIZE*50,GRIDSIZE*50);
+        stage.setTitle("BattleShip");
         setButtons();
         stage.setScene(scene);
         stage.show();
@@ -25,7 +27,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
         grid = new Button[GRIDSIZE][GRIDSIZE];
         for (int i = 0; i < GRIDSIZE; i++) {
             for (int j = 0; j < GRIDSIZE; j++) {
-                grid[i][j] = new Button("");
+                grid[i][j] = new Button();
                 grid[i][j].setPrefSize(GRIDSIZE*5,GRIDSIZE*5);
                 pane.add(grid[i][j],i,j);
                 grid[i][j].setOnAction(this);
