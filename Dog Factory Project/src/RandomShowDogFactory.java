@@ -13,7 +13,7 @@ public class RandomShowDogFactory {
             d = (ShowDog)(Class.forName(randomDogType.toString())).newInstance();
         }
         catch (Exception e) {
-
+            //Empty
         }
         d.setName(d.getClass().getName()+generator.nextInt(1000));
         d.setAge(generator.nextInt(10));

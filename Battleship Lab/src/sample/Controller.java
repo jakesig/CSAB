@@ -1,3 +1,5 @@
+package sample;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,6 +15,8 @@ public class Controller extends Application implements EventHandler<ActionEvent>
     private Board myBoard;
     private static final int GRIDSIZE = 10;
     @Override public void start(Stage stage) {
+        myBoard = new Board();
+        myBoard.setShips();
         pane = new GridPane();
         scene = new Scene(pane, GRIDSIZE*50,GRIDSIZE*50);
         stage.setTitle("BattleShip");
@@ -21,7 +25,13 @@ public class Controller extends Application implements EventHandler<ActionEvent>
         stage.show();
     }
     @Override public void handle(ActionEvent event) {
-        System.out.println("Button Clicked");
+        for (int i = 0; i <GRIDSIZE; i++) {
+            for (int j = 0; j <GRIDSIZE; j++) {
+                if (event.getSource()==grid[i][j]){
+                    System.out.println("("+i+", "+j+")");
+                }
+            }
+        }
     }
     public void setButtons() {
         grid = new Button[GRIDSIZE][GRIDSIZE];

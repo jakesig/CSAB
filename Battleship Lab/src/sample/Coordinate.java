@@ -1,3 +1,5 @@
+package sample;
+
 public class Coordinate {
     private int x;
     private int y;
@@ -10,5 +12,17 @@ public class Coordinate {
         if(b.getCoord(x,y)==null)
             myInstance = new Coordinate(x,y);
         return myInstance;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    @Override public String toString() {
+        return "("+x+", "+y+")";
     }
 }
