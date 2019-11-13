@@ -27,18 +27,18 @@ public class Board {
     public void setShips() {
         ArrayList<Coordinate> arr = new ArrayList<Coordinate>();
         //Pick random point to determine origin of ship
-        Random generator = new Random();
+        Random generator = new Random(123558);
         Coordinate origin = Coordinate.newCoord(this, generator.nextInt(10), generator.nextInt(10));
         arr.add(origin);
         //Start with destroyer
         ArrayList<Coordinate> destroyer = new ArrayList<Coordinate>();
         destroyer.add(origin);
         //Then Submarine
-        Coordinate origin2 = Coordinate.newCoord(this, generator.nextInt(10), generator.nextInt(10));
-        /*while (origin2.getX()==origin.getX() && origin2.getY()==origin.getY()) {
-            origin2 = Coordinate.newCoord(this, generator.nextInt(10), generator.nextInt(10));
-        }*/
-        arr.add(origin2);
+        origin = Coordinate.newCoord(this, generator.nextInt(10), generator.nextInt(10));
+        while (origin.getX()==arr.get(0).getX() && origin.getY()==arr.get(0).getY()) {
+            origin = Coordinate.newCoord(this, generator.nextInt(10), generator.nextInt(10));
+        }
+        arr.add(origin);
         System.out.println(arr);
     }
 }

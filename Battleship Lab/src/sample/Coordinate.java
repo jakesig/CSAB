@@ -9,8 +9,7 @@ public class Coordinate {
         this.y = y;
     }
     public static final Coordinate newCoord(Board b, int x, int y) {
-        if(b.getCoord(x,y)==null)
-            myInstance = new Coordinate(x,y);
+        myInstance = new Coordinate(x,y);
         return myInstance;
     }
 
