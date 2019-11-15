@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import java.util.*;
 
 public class Controller extends Application implements EventHandler<ActionEvent> {
     private GridPane pane;
@@ -14,6 +15,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
     private Button[][] grid;
     private Board myBoard;
     private static final int GRIDSIZE = 10;
+    private ArrayList<Coordinate> guessed = new ArrayList<Coordinate>();
     @Override public void start(Stage stage) {
         myBoard = new Board();
         myBoard.setShips();
@@ -25,13 +27,33 @@ public class Controller extends Application implements EventHandler<ActionEvent>
         stage.show();
     }
     @Override public void handle(ActionEvent event) {
+        Coordinate coord = Coordinate.newCoord(myBoard, 10, 10);
+        boolean correct = false;
+        int x = 0;
+        int y = 0;
         for (int i = 0; i <GRIDSIZE; i++) {
             for (int j = 0; j <GRIDSIZE; j++) {
                 if (event.getSource()==grid[i][j]){
-                    System.out.println("("+i+", "+j+")");
+                    coord = Coordinate.newCoord(myBoard, i, j);
                 }
             }
         }
+        for (Coordinate c : myBoard.getTakenPoints()) {
+            if (c.getX()==coord.getX() && c.getY()==coord.getY()) {
+                x = c.getX();
+                y = c.getY();
+                grid[x][y].setStyle("-fx-background-color: #ff0000; ");
+                grid[x][y].setPrefSize(GRIDSIZE*5,GRIDSIZE*5);
+                guessed.add(c);
+                correct = true;
+                break;
+            }
+        }
+        if (!correct) {
+            guessed.add(coord);
+            grid[coord.getX()][coord.getY()].setStyle("-fx-background-color: #ffffff; ");
+        }
+
     }
     public void setButtons() {
         grid = new Button[GRIDSIZE][GRIDSIZE];
@@ -39,12 +61,12 @@ public class Controller extends Application implements EventHandler<ActionEvent>
             for (int j = 0; j < GRIDSIZE; j++) {
                 grid[i][j] = new Button();
                 grid[i][j].setPrefSize(GRIDSIZE*5,GRIDSIZE*5);
+                grid[i][j].setStyle("-fx-background-color: #808080; ");
                 pane.add(grid[i][j],i,j);
                 grid[i][j].setOnAction(this);
             }
         }
     }
-
     public static void main(String[] args) {
         launch(args);
     }
