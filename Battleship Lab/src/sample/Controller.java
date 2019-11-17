@@ -3,15 +3,24 @@ package sample;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import java.math.BigInteger;
 import java.util.*;
 
 public class Controller extends Application implements EventHandler<ActionEvent> {
+    private Stage primary;
     private GridPane pane;
     private Scene scene;
+    private Scene finished;
     private Button[][] grid;
     private Board myBoard;
     private static final int GRIDSIZE = 10;
@@ -61,14 +70,18 @@ public class Controller extends Application implements EventHandler<ActionEvent>
             System.out.println("Ship sunk: " + sunk);
         }
         if (sunkShips==5) {
-            System.out.println("You sunk all the ships! Exiting in 5 seconds.");
-            try {
-                Thread.sleep(5000);
-            }
-            catch (Exception e) {
-                //Empty
-            }
-            System.exit(0);
+            //System.out.println("You sunk all the ships! Exiting in 5 seconds.");
+            Text text = new Text();
+            text.setText("You sunk all the ships!\n\n\n\n\n\n\n");
+            text.setFont(Font.font("", FontWeight.BOLD, FontPosture.REGULAR, 30));
+            text.setX(50);
+            text.setY(50);
+            Group root = new Group(text);
+            finished = new Scene(root, GRIDSIZE*50, GRIDSIZE*50);
+            primary = new Stage();
+            primary.setScene(finished);
+            primary.show();
+            //System.exit(0);
         }
     }
     private void setButtons() {
