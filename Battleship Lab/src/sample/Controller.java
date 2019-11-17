@@ -16,6 +16,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
     private Board myBoard;
     private static final int GRIDSIZE = 10;
     private ArrayList<Coordinate> guessed = new ArrayList<Coordinate>();
+    private int sunkShips;
     @Override public void start(Stage stage) {
         myBoard = new Board();
         myBoard.setShips();
@@ -29,6 +30,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
     @Override public void handle(ActionEvent event) {
         Coordinate coord = Coordinate.newCoord(myBoard, 10, 10);
         boolean correct = false;
+        String sunk = "";
         int x = 0;
         int y = 0;
         for (int i = 0; i <GRIDSIZE; i++) {
@@ -53,9 +55,23 @@ public class Controller extends Application implements EventHandler<ActionEvent>
             guessed.add(coord);
             grid[coord.getX()][coord.getY()].setStyle("-fx-background-color: #ffffff; ");
         }
-
+        sunk = myBoard.sunk(guessed, grid);
+        if (!sunk.equals("None")) {
+            sunkShips++;
+            System.out.println("Ship sunk: " + sunk);
+        }
+        if (sunkShips==5) {
+            System.out.println("You sunk all the ships! Exiting in 5 seconds.");
+            try {
+                Thread.sleep(5000);
+            }
+            catch (Exception e) {
+                //Empty
+            }
+            System.exit(0);
+        }
     }
-    public void setButtons() {
+    private void setButtons() {
         grid = new Button[GRIDSIZE][GRIDSIZE];
         for (int i = 0; i < GRIDSIZE; i++) {
             for (int j = 0; j < GRIDSIZE; j++) {
