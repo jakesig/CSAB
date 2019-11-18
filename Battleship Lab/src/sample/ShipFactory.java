@@ -9,7 +9,7 @@ public class ShipFactory {
     private int direction;
     public ShipFactory(Board myBoard) {
         this.myBoard = myBoard;
-        generator = new Random();
+        generator = new Random(15);
     }
     public Coordinate generatePointInDirection(ArrayList<Coordinate> ship) {
         int x = ship.get(ship.size()-1).getX();
