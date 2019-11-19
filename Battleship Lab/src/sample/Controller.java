@@ -19,6 +19,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
     private Button[][] grid;
     private Board myBoard;
     private static final int GRIDSIZE = 10;
+    private static final int MAXSHIPS = 5;
     private ArrayList<Coordinate> guessed = new ArrayList<Coordinate>();
     private int sunkShips;
     private boolean done;
@@ -41,7 +42,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
         Scene finished = new Scene(root, GRIDSIZE * 25, GRIDSIZE * 10);
         Stage primary = new Stage();
         primary.setScene(finished);
-        Coordinate coord = Coordinate.newCoord(myBoard, 10, 10);
+        Coordinate coord = Coordinate.newCoord(myBoard, -1, -1);
         boolean correct = false;
         String sunk = "";
         int x = 0;
@@ -77,7 +78,7 @@ public class Controller extends Application implements EventHandler<ActionEvent>
             text.setText("You sunk the "+sunk+"!");
             primary.show();
         }
-        if (sunkShips==5) {
+        if (sunkShips==MAXSHIPS) {
             text.setText("You sunk all the ships!\n\nClick anywhere on\nthe grid to exit.");
             primary.show();
             done = true;

@@ -1,7 +1,7 @@
 package sample;
 import javafx.scene.control.Button;
-
 import java.util.*;
+
 public class Board {
     private ArrayList<Coordinate> arr;
     private ArrayList<Coordinate> destroyer;
@@ -41,35 +41,35 @@ public class Board {
             if (hits == ship.size()) {
                 if (ships.get(i).equals(destroyer)) {
                     for (Coordinate c: destroyer) {
-                        grid[c.getX()][c.getY()].setStyle("-fx-background-color: #ffa500; ");
+                        grid[c.getX()][c.getY()].setStyle("-fx-background-color: #000000; ");
                     }
                     ships.remove(destroyer);
                     return "Destroyer";
                 }
                 if (ships.get(i).equals(submarine)) {
                     for (Coordinate c: submarine) {
-                        grid[c.getX()][c.getY()].setStyle("-fx-background-color: #ffa500; ");
+                        grid[c.getX()][c.getY()].setStyle("-fx-background-color: #000000; ");
                     }
                     ships.remove(submarine);
                     return "Submarine";
                 }
                 if (ships.get(i).equals(cruiser)) {
                     for (Coordinate c: cruiser) {
-                        grid[c.getX()][c.getY()].setStyle("-fx-background-color: #ffa500; ");
+                        grid[c.getX()][c.getY()].setStyle("-fx-background-color: #000000; ");
                     }
                     ships.remove(cruiser);
                     return "Cruiser";
                 }
                 if (ships.get(i).equals(battleship)) {
                     for (Coordinate c: battleship) {
-                        grid[c.getX()][c.getY()].setStyle("-fx-background-color: #ffa500; ");
+                        grid[c.getX()][c.getY()].setStyle("-fx-background-color: #000000; ");
                     }
                     ships.remove(battleship);
                     return "Battleship";
                 }
                 if (ships.get(i).equals(carrier)) {
                     for (Coordinate c: carrier) {
-                        grid[c.getX()][c.getY()].setStyle("-fx-background-color: #ffa500; ");
+                        grid[c.getX()][c.getY()].setStyle("-fx-background-color: #000000; ");
                     }
                     ships.remove(carrier);
                     return "Carrier";
