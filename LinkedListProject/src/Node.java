@@ -1,7 +1,6 @@
 public class Node {
     public String data;
     public int otherData;
-
     public Node next;
     public Node(String str, int num) {
         this.data = str;
@@ -15,24 +14,31 @@ public class Node {
     }
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
-        list.insertFirstLink("Kurtzman", 15);
-        list.insertFirstLink("Lemon", 12);
-        list.display();
+        list.insertFirstNode("A", 3);
+        list.insertFirstNode("B", 7);
+        list.insertFirstNode("C", 9);
+        list.insertFirstNode("D", 7);
+        //list.removeNode(7);
+        System.out.println(list);
+        list.removeLast(list.firstLink);
+        System.out.println(list);
     }
 }
 
 class LinkedList {
     public Node firstLink;
+    public int size;
     public LinkedList() {
         firstLink = null;
     }
     public boolean isEmpty() {
         return (firstLink==null);
     }
-    public void insertFirstLink(String str, int num) {
+    public void insertFirstNode(String str, int num) {
         Node newNode = new Node(str, num);
         newNode.next = firstLink;
         firstLink = newNode;
+        size++;
     }
     public Node removeFirst() {
         Node nodeRef = firstLink;
@@ -44,14 +50,16 @@ class LinkedList {
         }
         return nodeRef;
     }
-    public void display() {
+    @Override public String toString() {
+        String s = "";
         Node node = firstLink;
         while (node!=null) {
-            node.display();
-            System.out.println("Next Node: "+node.next);
+            s=s+node.toString();
+            s=s+"\nNext: "+node.next;
             node = node.next;
-            System.out.println();
+            s=s+"\n";
         }
+        return s;
     }
     public Node find(String str) {
         Node node = firstLink;
@@ -70,10 +78,10 @@ class LinkedList {
         }
         return node;
     }
-    public Node removeNode(String str) {
+    public Node removeNode(int num) {
         Node current = firstLink;
         Node previous = firstLink;
-        while(!current.data.equals(str)) {
+        while(current.otherData!=num) {
             if (current.next==null) {
                 return null;
             }
@@ -89,5 +97,17 @@ class LinkedList {
             previous.next = current.next;
         }
         return current;
+    }
+    public void removeLast(Node front) {
+        if (front==null) {
+            return;
+        }
+        Node temp = front.next;
+        Node prev = front;
+        while (temp.next!=null) {
+            prev = temp;
+            temp = temp.next;
+        }
+        prev.next=null;
     }
 }
