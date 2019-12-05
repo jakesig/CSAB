@@ -30,6 +30,7 @@ public class Stack {
     }
     public Object pop() {
         if (this.isEmpty()) {
+            System.out.println("Can't pop. Empty Stack.");
             return null;
         }
         Object toReturn = arr[size-1];
