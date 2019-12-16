@@ -1,3 +1,8 @@
+/*
+Jacob Sigman
+12/5/2019
+LinkedList Project
+ */
 import java.util.ArrayList;
 
 public class Node {
@@ -10,6 +15,7 @@ public class Node {
         return ""+data;
     }
     public static void main(String[] args) {
+        //Tester Code
         LinkedList list = new LinkedList();
         list.add(3);
         list.add(7);
