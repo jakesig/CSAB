@@ -20,5 +20,4 @@ public class RandomShowDogFactory {
         d.setWeight(generator.nextDouble()*100);
         return d;
     }
-
 }

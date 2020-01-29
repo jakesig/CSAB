@@ -1,3 +1,8 @@
+/*
+Jacob Sigman
+12/5/2019
+Stack Project
+ */
 public class Stack {
     private Object[] arr;
     private int size;
@@ -53,6 +58,7 @@ public class Stack {
         size = 0;
     }
     public static void main(String[] args) {
+        //Tester Code
         Stack s = new Stack();
         s.push(1);
         s.push(2);
