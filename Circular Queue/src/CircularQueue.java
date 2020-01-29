@@ -44,7 +44,11 @@ class Node {
     }
     public static void main(String[] args) {
         //Tester Code
-        CircularQueue list = new CircularQueue(229);
-        System.out.println(list.execute());
+        CircularQueue list = new CircularQueue(0);
+        for (int i = 1; i < 100; i++) {
+            list = new CircularQueue(i);
+            System.out.println(i+": "+list.execute());
+        }
+
     }
 }
