@@ -12,27 +12,29 @@ public class Node {
     }
 
     public static void main(String[] args) {
-        DoublyLinkedList dl = new DoublyLinkedList();
+        TwoWayLinkedList dl = new TwoWayLinkedList();
         dl.add(7);
         dl.add(8);
         dl.add(4);
         dl.add(6);
         Node current = dl.firstLink;
+        System.out.println("Parse Forwards");
         for(int i = 0; i<dl.size(); ++i) {
             System.out.println(current);
             if (current.next!=null)
                 current=current.next;
         }
+        System.out.println("Parse Backwards");
         for (int i = 0; i <dl.size() ; i++) {
             System.out.println(current);
             current=current.previous;
         }
     }
 }
-class DoublyLinkedList {
+class TwoWayLinkedList {
     public Node firstLink;
     private int size;
-    public DoublyLinkedList() {
+    public TwoWayLinkedList() {
         firstLink = null;
     }
     public boolean isEmpty() {
