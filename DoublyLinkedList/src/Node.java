@@ -13,10 +13,11 @@ public class Node {
 
     public static void main(String[] args) {
         TwoWayLinkedList dl = new TwoWayLinkedList();
+        /*dl.add(1);
+        dl.add(3);
+        dl.add(5);
         dl.add(7);
-        dl.add(8);
-        dl.add(4);
-        dl.add(6);
+        dl.add(9);
         Node current = dl.firstLink;
         System.out.println("Parse Forwards");
         for(int i = 0; i<dl.size(); ++i) {
@@ -29,6 +30,8 @@ public class Node {
             System.out.println(current);
             current=current.previous;
         }
+        dl.remove((Object)3);
+        System.out.println(dl);*/
     }
 }
 class TwoWayLinkedList {
