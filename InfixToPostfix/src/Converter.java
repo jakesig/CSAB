@@ -3,7 +3,7 @@ import java.util.*;
 public class Converter {
     private final Set<Character> open= new HashSet<Character>(Arrays.asList('(','{','['));
     private final Set<Character> closed= new HashSet<Character>(Arrays.asList(')','}',']'));
-    private final ArrayList<Character> operators = new ArrayList<Character>(Arrays.asList('(','*','/','+','-'));
+    private final ArrayList<Character> operators = new ArrayList<Character>(Arrays.asList('*','/','+','-'));
     public boolean isOpenParen(char token) {
         return open.contains(token);
     }
