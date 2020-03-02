@@ -13,37 +13,38 @@ public class Dijkstra {
         if (expression.length()==0)
             return Integer.MIN_VALUE;
         for (String s : exp) {
-            //If it's an operator
-            if (operators.contains(s)) {
-                operator.push(s);
-            }
-            //If it's a right parenthesis
-            else if (!s.equals(")")){
-                operand.push(Integer.parseInt(s));
-            }
-            if (!operand.isEmpty()&&s.equals(")")) {
-                operand.push(useOp(operator.pop(),operand.pop(),operand.pop()));
-                //operator.pop();
+            switch (s) {
+                case "(":
+                    break;
+                case "+":
+                case "-":
+                case "*":
+                case "/":
+                case "sqrt":
+                    operator.push(s);
+                    break;
+                case ")":
+                    operand.push(useOp(operator.pop(),operand.pop(),operand.pop()));
+                    break;
+                default:
+                    operand.push(Integer.parseInt(s));
+                    break;
             }
         }
-        while (!operator.isEmpty()) {
-            operand.push(useOp(operator.pop(),operand.pop(),operand.pop()));
-        }
-        ans=(int)operand.pop();
-        return ans;
+        return (int)operand.pop();
     }
     public Integer useOp(String op, Integer i1, Integer i2) {
         if (op.equals("+")) {
             return i1+i2;
         }
         if (op.equals("-")) {
-            return i1-i2;
+            return i2-i1;
         }
         if (op.equals("*")) {
             return i1*i2;
         }
         if (op.equals("/")) {
-            return i1/i2;
+            return i2/i1;
         }
         return -1;
     }
