@@ -26,9 +26,10 @@ public class StringStack {
     }
     public static void main(String[] args) {
         StringStack ss = new StringStack();
-        Set<String> set = ss.permute("meet");
+        Set<String> set = ss.permute("free");
+        int i = 1;
         for (String s : set) {
-            System.out.print(s);
+            System.out.print(i++ + ".\t"+ s);
         }
     }
 }

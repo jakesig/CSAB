@@ -3,34 +3,52 @@ import java.util.Arrays;
 import java.util.Stack;
 
 public class Dijkstra {
+    private final ArrayList<String> operators = new ArrayList<String>(Arrays.asList("(","sqrt(","*","/","+","-"));
     public int evaluate(String expression) {
+        String[] exp = expression.split(" ");
         int ans = 0;
         char current = ' ';
-        ArrayList<Character> operators = new ArrayList<Character>(Arrays.asList('+','-','/','*'));
-        Stack<Character> operator = new Stack<Character>();
+        Stack<String> operator = new Stack<String>();
         Stack<Integer> operand = new Stack<Integer>();
         if (expression.length()==0)
             return Integer.MIN_VALUE;
-        for (int i = 0; i < expression.length(); i++) {
-            current = expression.charAt(i);
-            //If it's a number
-            if (Character.isDigit(current))
-                operand.push((int)current);
+        for (String s : exp) {
             //If it's an operator
-            else if (operators.contains(current))
-                ;
-            //If it's a left parenthesis
-            else if (current == '(') {
-                operator.push(current);
+            if (operators.contains(s)) {
+                operator.push(s);
             }
             //If it's a right parenthesis
-            else if (current == ')') {
-
+            else if (!s.equals(")")){
+                operand.push(Integer.parseInt(s));
+            }
+            if (!operand.isEmpty()&&s.equals(")")) {
+                operand.push(useOp(operator.pop(),operand.pop(),operand.pop()));
+                //operator.pop();
             }
         }
+        while (!operator.isEmpty()) {
+            operand.push(useOp(operator.pop(),operand.pop(),operand.pop()));
+        }
+        ans=(int)operand.pop();
         return ans;
+    }
+    public Integer useOp(String op, Integer i1, Integer i2) {
+        if (op.equals("+")) {
+            return i1+i2;
+        }
+        if (op.equals("-")) {
+            return i1-i2;
+        }
+        if (op.equals("*")) {
+            return i1*i2;
+        }
+        if (op.equals("/")) {
+            return i1/i2;
+        }
+        return -1;
     }
     public static void main(String[] args) {
         Dijkstra d = new Dijkstra();
+        System.out.println(d.evaluate("( 1 + ( 2 * 3 ) )"));
     }
 }
