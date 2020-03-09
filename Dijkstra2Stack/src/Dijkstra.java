@@ -24,7 +24,10 @@ public class Dijkstra {
                     operator.push(s);
                     break;
                 case ")":
-                    operand.push(useOp(operator.pop(),operand.pop(),operand.pop()));
+                    if (operator.peek().equals("sqrt"))
+                        operand.push(useOp(operator.pop(),operand.pop(),0));
+                    else
+                        operand.push(useOp(operator.pop(),operand.pop(),operand.pop()));
                     break;
                 default:
                     operand.push(Integer.parseInt(s));
@@ -46,10 +49,13 @@ public class Dijkstra {
         if (op.equals("/")) {
             return i2/i1;
         }
+        if (op.equals("sqrt")) {
+            return (int) Math.sqrt(i1);
+        }
         return -1;
     }
     public static void main(String[] args) {
         Dijkstra d = new Dijkstra();
-        System.out.println(d.evaluate("( 1 + ( 2 * 3 ) )"));
+        System.out.println(d.evaluate("( ( ( 3 * 8 ) + sqrt ( 25 ) ) - 10 )"));
     }
 }
