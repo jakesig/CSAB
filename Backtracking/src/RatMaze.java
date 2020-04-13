@@ -73,39 +73,70 @@ class RatMazeStack{
             System.out.println("Whoops.");
     }
     public boolean solveMazeHelper() {
-        Pair<Integer, Integer> current = stack.peek();
-        int x = current.getKey();
-        int y = current.getValue();
-        if (x==N-1 && y==N-1) {
-            return true;
+        Pair<Integer, Integer> current;
+        boolean isValidRight;
+        boolean isValidDown;
+        int x = 0;
+        int y = 0;
+        solution[0][0] = 1;
+        //stack.push(new Pair<Integer, Integer>(x,y));
+        while (!stack.isEmpty()) {
+            current = stack.peek();
+            x = current.getKey();
+            y = current.getValue();
+            if (x==N-1 && y==N-1) {
+                return true;
+            }
+            Pair<Integer, Integer> right = new Pair<Integer, Integer>(x+1, y);
+            Pair<Integer, Integer> down = new Pair<Integer, Integer>(x, y+1);
+            isValidRight = isValid(right);
+            isValidDown = isValid(down);
+            if (isValidDown) {
+                visited[x][y + 1] = false;
+                solution[x][y + 1] = 1;
+                stack.push(down);
+            }
+            else if (isValidRight) {
+                visited[x + 1][y] = false;
+                solution[x + 1][y] = 1;
+                stack.push(right);
+            }
+            if (!isValidRight && !isValidDown) {
+                visited[x][y] = true;
+                stack.pop();
+            }
         }
-        if (!isValid(current))
-            return false;
         return false;
     }
     public boolean isValid(Pair<Integer, Integer> pair) {
-        Integer x = pair.getKey();
-        Integer y = pair.getValue();
+        Integer y = pair.getKey();
+        Integer x = pair.getValue();
         //return false if outside of matrix bounds or square is dark.
         return (x>=0 && x<N && y>=0 && y<N && MAZE[x][y]!=0 && !visited[x][y]);
     }
     public void printSolution() {
-        System.out.println("There are "+ stack.size() + " steps to the solution: ");
-        while(!stack.isEmpty()) {
-            System.out.println(stack.pop());
+        for(int i=0; i<solution.length; ++i) {
+            for (int j = 0; j < solution[0].length; j++)
+                System.out.print(solution[j][i] + "\t");
+            System.out.println();
         }
     }
 }
 class Tester {
     public static void main(String[] args) {
         int [] [] maze = {
-                {1,0,0,1},
                 {1,1,1,1},
-                {0,0,0,0},
+                {0,1,1,0},
+                {1,1,0,0},
                 {1,1,1,1}
         };
+        System.out.println("Recursive Solution");
+        System.out.println("------------------");
         RatMaze rm = new RatMaze(maze);
         rm.solveMaze();
+        System.out.println("Stack-Based Solution");
+        System.out.println("--------------------");
         RatMazeStack rms = new RatMazeStack(maze);
+        rms.solveMaze();
     }
 }
