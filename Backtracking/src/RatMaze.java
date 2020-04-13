@@ -130,8 +130,12 @@ class Tester {
                 {1,1,0,0},
                 {1,1,1,1}
         };
+        System.out.println("Recursive Solution");
+        System.out.println("------------------");
         RatMaze rm = new RatMaze(maze);
         rm.solveMaze();
+        System.out.println("Stack-Based Solution");
+        System.out.println("--------------------");
         RatMazeStack rms = new RatMazeStack(maze);
         rms.solveMaze();
     }
