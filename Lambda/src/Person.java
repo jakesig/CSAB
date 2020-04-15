@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.function.Predicate;
 
 public class Person {
     private String name;
@@ -29,7 +30,7 @@ public class Person {
             System.out.print(p);
     }
 
-    public static void printLetter(List<Person> ppl, Filter f) {
+    public static void printLetter(List<Person> ppl, Predicate<Person> f) {
         for(Person per : ppl)
             if (f.test(per))
                 System.out.println(per);

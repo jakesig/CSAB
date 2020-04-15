@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.*;
 
 public class PersonTesterLambda {
     public static void main(String[] args) {
@@ -16,7 +17,7 @@ public class PersonTesterLambda {
         Collections.sort(people, (o1, o2)-> o1.getName().compareTo(o2.getName()));
         Person.printList(people);
         //Starting with A
-        Filter f = p -> {
+        Predicate<Person> f = p -> {
             return(p.getName().toUpperCase().startsWith("A"));
         };
         Person.printLetter(people, f);
