@@ -1,4 +1,3 @@
-# Jake's Repository
-Welcome! This code has been created for use in a College-Level class called Data Structures and Algorithms! That's all.
+# dsa2019-2020
 
-\- Jake, WHS 2020
+Data Structures and Algorithms and Westhill High School, 2019 through 2020.
